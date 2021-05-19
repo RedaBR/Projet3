@@ -7,5 +7,19 @@
 
 import Foundation
 
-print("Hello, World!")
+
+var persoPlayer1 = [Character]()
+var persoPlayer2 = [Character]()
+
+
+var player1 = Player ()
+var player2 = Player ()
+
+var jeu = Game()
+
+jeu.startGame()
+
+
+
+
 

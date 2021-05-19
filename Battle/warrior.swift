@@ -13,3 +13,4 @@ class Warrior : Character {
         super.init(name: name, lifePoints: 300, strenght: 1000)
     }
     }
+
