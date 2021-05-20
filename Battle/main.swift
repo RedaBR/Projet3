@@ -17,6 +17,8 @@ var player2 = Player (name: String())
 // instance du modéle jeu pour lancer les methodes du modéle 
 var jeu = Game()
 
+let warrior = Warrior(name: String())
+
 jeu.startGame()
 
 

@@ -53,7 +53,7 @@ class Game {
         // limiter la selection des perso à 3
         while perso.count < 3 {
             
-            print("Selectionner jusqua 3 personnages pour constituer ton équipe",
+            print("Selectionne jusqu'a 3 personnages pour constituer ton équipe",
               "\n1 Warrior",
               "\n2 Colosus",
               "\n3 Dwarf",
@@ -61,43 +61,14 @@ class Game {
             
             // choix du joueur
             if let selection = readLine(){
-        
-                
-                switch selection {
-                    case "1" : print("Warrior",
-                                    "\n choisis le nom de ton Warrior")
-                        if let characterNamed = readLine(){
-                            // on rajoute le nom choisi au personnage
-                            let warrior = Warrior(name: characterNamed)
-                            //on rajoute le personnage au tableau des persos
-                            perso.append(warrior)
-                            // on informe le joueur de son choix
-                            print("\(characterNamed) is the Warrior")
-                        }
-                                
-                    case "2" : print("Colosus",
-                                    "\n choisis le nom de ton colosus")
-                        if let characterNamed = readLine(){
-                            let colosus = Colosus(name: characterNamed)
-                            perso.append(colosus)
-                            print("\(characterNamed) is the Colosus")
-                        }
-                    case "3" : print("dwarf",
-                                     "\n choisis le nom de ton Dwarf")
-                        if let characterNamed = readLine(){
-                            let dwarf = Dwarf(name: characterNamed)
-                            perso.append(dwarf)
-                            print("\(characterNamed) is the Dwarf")
-                        }
-                        
-                    case "4" : print("magus",
-                                    "\n choisis le nom de magus")
-                        if let characterNamed = readLine(){
-                            let magus = Magus(name: characterNamed)
-                            perso.append(magus)
-                            print("\(characterNamed)is the Magus")
-                        }
-                        
+                switch selection  {
+                case "1" :
+                    perso.append(newPersoWarrior())
+                case "2" :
+                    perso.append(newPersoColosus())
+                case "3" :
+                    perso.append(newPersoDwarf())
+                case "4" : perso.append(newPersoMagus())
                     default : ("")
                 }
             }
@@ -115,4 +86,52 @@ class Game {
     
     
   
+}
+
+func newPersoWarrior () -> Warrior {
+    print("Warrior","\n choisis le nom de ton Warrior")
+    if let characterNamed = readLine(){
+        // on rajoute le nom choisi au personnage
+        let warrior = Warrior(name: characterNamed)
+        // on informe le joueur de son choix
+        print("\(characterNamed) is the Warrior")
+        return warrior
+    }
+    
+    // si characterNamed est nul on renvoi un Warrior sans nom
+   return Warrior(name:"")
+}
+
+func newPersoColosus() -> Colosus {
+
+print("Colosus",
+                "\n choisis le nom de ton colosus")
+    if let characterNamed = readLine(){
+        let colosus = Colosus(name: characterNamed)
+        print("\(characterNamed) is the Colosus")
+        return colosus
+    }
+    return Colosus(name: "")
+}
+
+func newPersoDwarf () -> Dwarf {
+    print("dwarf",
+                     "\n choisis le nom de ton Dwarf")
+        if let characterNamed = readLine(){
+            let dwarf = Dwarf(name: characterNamed)
+            print("\(characterNamed) is the Dwarf")
+    return dwarf
+}
+    return Dwarf(name:"")
+}
+
+func newPersoMagus ()->Magus {
+    print("magus",
+                    "\n choisis le nom de magus")
+        if let characterNamed = readLine(){
+            let magus = Magus(name: characterNamed)
+            print("\(characterNamed)is the Magus")
+        return magus
+        }
+    return Magus(name:"")
 }
