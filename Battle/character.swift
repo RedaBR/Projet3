@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// un modele personnages avec les propriétés des personnages 
 class Character {
     
     var name : String

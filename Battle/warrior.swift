@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// un modele personnage et ses propriétés de base et le nom choisi par le joueur 
 class Warrior : Character {
     
     init (name : String) {

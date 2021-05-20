@@ -71,7 +71,6 @@
 		9D5B08772653FE1A00F32D43 /* Battle */ = {
 			isa = PBXGroup;
 			children = (
-				9D5B08782653FE1A00F32D43 /* main.swift */,
 				9D3BC12F2655400300C2E43A /* game.swift */,
 				9D3BC1322655420500C2E43A /* player.swift */,
 				9D3BC1352655426A00C2E43A /* character.swift */,
@@ -79,6 +78,7 @@
 				9D3BC13B265542DB00C2E43A /* colos.swift */,
 				9D3BC13E2655430000C2E43A /* magus.swift */,
 				9D3BC1412655434700C2E43A /* dwarf.swift */,
+				9D5B08782653FE1A00F32D43 /* main.swift */,
 			);
 			path = Battle;
 			sourceTree = "<group>";

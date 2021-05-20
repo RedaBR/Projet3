@@ -6,9 +6,13 @@
 //
 
 import Foundation
-
+// modéle joueur avec sa propriété 
 class Player {
     
-    var name:String?
-    var personnageChoisi = [Character]()
+    var name:String
+    
+    init(name:String){
+        self.name=name
+    }
+    
 }

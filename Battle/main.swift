@@ -7,14 +7,14 @@
 
 import Foundation
 
-
+// tabelaux contenant les infos joueur
 var persoPlayer1 = [Character]()
 var persoPlayer2 = [Character]()
 
-
-var player1 = Player ()
-var player2 = Player ()
-
+// joueurs avec leurs caractériques qui est le le nom
+var player1 = Player (name: String())
+var player2 = Player (name: String())
+// instance du modéle jeu pour lancer les methodes du modéle 
 var jeu = Game()
 
 jeu.startGame()
