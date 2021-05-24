@@ -108,11 +108,11 @@ enum CharactENUM {
 }
 
 
-func newCharacter (characterType : CharactENUM) -> Character {
-    
+func newCharacter (characterType : CharactENUM)->Character  {
+    print ("Choisi le nom de ton perso ")
     let character = Character(name: String(), lifePoints: Int(), strenght: Int())
     if let charaterNamed = readLine(){
-    
+
         switch allperso {
         
         case .warrior :
@@ -125,9 +125,10 @@ func newCharacter (characterType : CharactENUM) -> Character {
             Dwarf(name: charaterNamed)
             
         default : ""
+            
+            
         }
     }
-    // appel recursif sur newCharacter si nil
     return character
 }
 
