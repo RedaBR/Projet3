@@ -16,3 +16,4 @@ class Player {
     }
     
 }
+var allperso : CharactENUM?
