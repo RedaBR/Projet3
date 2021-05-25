@@ -39,6 +39,7 @@ class Game {
         menu(numeroEquipe: 2)
         
         print("les équipes sont constituées")
+        
     }
     // fonction du menu
     func menu (numeroEquipe:Int) {
@@ -79,6 +80,7 @@ class Game {
                         perso.append(newCharacter(characterType: .dwarf))
                     case "4" :
                         perso.append(newCharacter(characterType: .magus))
+                        
                     default : ("")
                 }
             }
@@ -122,9 +124,6 @@ func newCharacter (characterType : CharactENUM)->Character  {
             return Magus(name: charaterNamed)
         case .dwarf :
             return Dwarf(name: charaterNamed)
-            
-        default : ""
-            
         }
     }
     return Character(name: "", lifePoints: 0, strenght: 0)
