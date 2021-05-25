@@ -49,7 +49,7 @@ class Game {
         if let choice = readLine() {
         
             if choice == "1" {
-                selectionPersonage(numeroEquipe: Int())
+                selectionPersonage(numeroEquipe: numeroEquipe)
             }
             else if choice == "2" {
                 startGame()
