@@ -38,8 +38,7 @@ class Game {
         
         menu(numeroEquipe: 2)
         
-        
-        
+        print("les équipes sont constituées")
     }
     // fonction du menu
     func menu (numeroEquipe:Int) {
@@ -72,14 +71,14 @@ class Game {
             // choix du joueur
             if let selection = readLine(){
                 switch selection  {
-                case "1" :
-                    perso.append(newCharacter(characterType: .warrior))
-                case "2" :
-                    perso.append(newCharacter(characterType: .colos))
-                case "3" :
-                    perso.append(newCharacter(characterType: .magus))
-                case "4" : perso.append(newCharacter(characterType: .dwarf))
-                    
+                    case "1" :
+                        perso.append(newCharacter(characterType: .warrior))
+                    case "2" :
+                        perso.append(newCharacter(characterType: .colos))
+                    case "3" :
+                        perso.append(newCharacter(characterType: .dwarf))
+                    case "4" :
+                        perso.append(newCharacter(characterType: .magus))
                     default : ("")
                 }
             }
@@ -110,26 +109,25 @@ enum CharactENUM {
 
 func newCharacter (characterType : CharactENUM)->Character  {
     print ("Choisi le nom de ton perso ")
-    let character = Character(name: String(), lifePoints: Int(), strenght: Int())
+
     if let charaterNamed = readLine(){
 
-        switch allperso {
+        switch characterType {
         
         case .warrior :
-            Warrior(name: charaterNamed)
+           return Warrior(name: charaterNamed)
         case .colos :
-            Colosus(name:charaterNamed)
+            return Colosus(name:charaterNamed)
         case .magus :
-            Magus(name: charaterNamed)
+            return Magus(name: charaterNamed)
         case .dwarf :
-            Dwarf(name: charaterNamed)
+            return Dwarf(name: charaterNamed)
             
         default : ""
             
-            
         }
     }
-    return character
+    return Character(name: "", lifePoints: 0, strenght: 0)
 }
 
 
