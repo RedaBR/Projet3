@@ -8,6 +8,16 @@
 import Foundation
 
 class Game {
+    
+    // tabelaux contenant les infos joueur
+    private var persoPlayer1 = [Character]()
+    private var persoPlayer2 = [Character]()
+    
+    
+    // joueurs avec leurs caractériques qui est le le nom
+    private var player1 = Player (name: String())
+    private var player2 = Player (name: String())
+    
     //fonction qui lance le jeu , identifie et nomme les joueurs
     func startGame(){
         print ("\n. Bienvenue dans Battle ",
@@ -39,8 +49,7 @@ class Game {
         if let choice = readLine() {
         
             if choice == "1" {
-
-                selectionPersonage(numeroEquipe: Int())
+                selectionPersonage(numeroEquipe: numeroEquipe)
             }
             else if choice == "2" {
                 startGame()
@@ -64,19 +73,20 @@ class Game {
             if let selection = readLine(){
                 switch selection  {
                 case "1" :
-                    perso.append(newPersoWarrior())
+                    perso.append(newCharacter(characterType: .warrior))
                 case "2" :
-                    perso.append(newPersoColosus())
+                    perso.append(newCharacter(characterType: .colos))
                 case "3" :
-                    perso.append(newPersoDwarf())
-                case "4" : perso.append(newPersoMagus())
+                    perso.append(newCharacter(characterType: .magus))
+                case "4" : perso.append(newCharacter(characterType: .dwarf))
+                    
                     default : ("")
                 }
             }
         }
         // on identifie le joueur
         if (numeroEquipe == 1) {
-        // on le contenu du tableaux des perso choisi au joueur identifé
+        // on  rajoute le contenu du tableaux des perso choisi au joueur identifé
             persoPlayer1.append(contentsOf: perso)
         } else if (numeroEquipe == 2) {
             persoPlayer2.append(contentsOf: perso)
@@ -89,50 +99,37 @@ class Game {
   
 }
 
-func newPersoWarrior () -> Warrior {
-    print("Warrior","\n choisis le nom de ton Warrior")
-    if let characterNamed = readLine(){
-        // on rajoute le nom choisi au personnage
-        let warrior = Warrior(name: characterNamed)
-        // on informe le joueur de son choix
-        print("\(characterNamed) is the Warrior")
-        return warrior
-    }
-    
-    // si characterNamed est nul on renvoi un Warrior sans nom
-   return Warrior(name:"")
+
+enum CharactENUM {
+    case warrior
+    case colos
+    case magus
+    case dwarf
 }
 
-func newPersoColosus() -> Colosus {
 
-print("Colosus",
-                "\n choisis le nom de ton colosus")
-    if let characterNamed = readLine(){
-        let colosus = Colosus(name: characterNamed)
-        print("\(characterNamed) is the Colosus")
-        return colosus
-    }
-    return Colosus(name: "")
-}
+func newCharacter (characterType : CharactENUM)->Character  {
+    print ("Choisi le nom de ton perso ")
+    let character = Character(name: String(), lifePoints: Int(), strenght: Int())
+    if let charaterNamed = readLine(){
 
-func newPersoDwarf () -> Dwarf {
-    print("dwarf",
-                     "\n choisis le nom de ton Dwarf")
-        if let characterNamed = readLine(){
-            let dwarf = Dwarf(name: characterNamed)
-            print("\(characterNamed) is the Dwarf")
-    return dwarf
-}
-    return Dwarf(name:"")
-}
-
-func newPersoMagus ()->Magus {
-    print("magus",
-                    "\n choisis le nom de magus")
-        if let characterNamed = readLine(){
-            let magus = Magus(name: characterNamed)
-            print("\(characterNamed)is the Magus")
-        return magus
+        switch allperso {
+        
+        case .warrior :
+            Warrior(name: charaterNamed)
+        case .colos :
+            Colosus(name:charaterNamed)
+        case .magus :
+            Magus(name: charaterNamed)
+        case .dwarf :
+            Dwarf(name: charaterNamed)
+            
+        default : ""
+            
+            
         }
-    return Magus(name:"")
+    }
+    return character
 }
+
+
