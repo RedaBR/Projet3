@@ -7,16 +7,13 @@
 
 import Foundation
 
+var perso = [Character]()
+var charactPlayer1 = [Character]()
+var charactPlayer2 = [Character]()
+
 class Game {
     
-    // tabelaux contenant les infos joueur
-    private var persoPlayer1 = [Character]()
-    private var persoPlayer2 = [Character]()
-    
-    
-    // joueurs avec leurs caractériques qui est le le nom
-    private var player1 = Player (name: String())
-    private var player2 = Player (name: String())
+  
     
     //fonction qui lance le jeu , identifie et nomme les joueurs
     func startGame(){
@@ -37,13 +34,10 @@ class Game {
         }
         
         menu(numeroEquipe: 2)
-        
-        print("les équipes sont constituées")
-        
+    
     }
     // fonction du menu
     func menu (numeroEquipe:Int) {
-           
         print("Créer votre equipe","\n1. Nouvelle equipe ","\n2. retour ")
      
         if let choice = readLine() {
@@ -59,7 +53,7 @@ class Game {
     // fonction pour laisser le choix à l'utilisateur de selectionner ses persos
     func selectionPersonage (numeroEquipe:Int) {
         
-        var perso = [Character]()
+       
         // limiter la selection des perso à 3
         while perso.count < 3 {
             
@@ -85,6 +79,7 @@ class Game {
                 }
             }
         }
+        
         // on identifie le joueur
         if (numeroEquipe == 1) {
         // on  rajoute le contenu du tableaux des perso choisi au joueur identifé
@@ -94,6 +89,7 @@ class Game {
         }
         // on informe le joueur que l'equipe est consitué 
         print("Votre équipe est constituée")
+        
     }
     
     
@@ -129,4 +125,49 @@ func newCharacter (characterType : CharactENUM)->Character  {
     return Character(name: "", lifePoints: 0, strenght: 0)
 }
 
+// tabelaux contenant les infos joueur
+private var persoPlayer1 = [Character]()
+private var persoPlayer2 = [Character]()
+
+
+// joueurs avec leurs caractériques qui est le le nom
+private var player1 = Player (name: String())
+private var player2 = Player (name: String())
+
+
+func startBattle () {
+    
+    print ("\(player1.name) choisis le personnage qui attaque ",
+           "\n  \(persoPlayer1.description)",
+           "\n1",
+           "\n2",
+           "\n3")
+    
+    if let choice = readLine(){
+        switch choice {
+        
+        case "1":  charactPlayer1.insert(persoPlayer1[0], at: 0)
+        case "2":  charactPlayer1.insert(persoPlayer1[1], at: 0)
+        case "3": charactPlayer1.insert(persoPlayer1[2], at: 0)
+        default:
+            print("erreur")
+        }
+}
+
+    print ("\(player2.name) choisis le personnage qui attaque ",
+           "\n  \(persoPlayer2.description)",
+           "\n1",
+           "\n2",
+           "\n3")
+    
+    if let choice = readLine(){
+        switch choice {
+        case "1":  charactPlayer2.insert(persoPlayer2[0], at: 0)
+        case "2":  charactPlayer2.insert(persoPlayer2[1], at: 0)
+        case "3": charactPlayer2.insert(persoPlayer2[2], at: 0)
+        default:
+            print("erreur")
+        }
+}
+}
 
