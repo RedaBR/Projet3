@@ -7,7 +7,6 @@
 
 import Foundation
 
-var perso = [Character]()
 var charactPlayer1 = [Character]()
 var charactPlayer2 = [Character]()
 
@@ -18,8 +17,7 @@ class Game {
     //fonction qui lance le jeu , identifie et nomme les joueurs
     func startGame(){
         print ("\n. Bienvenue dans Battle ",
-               "\n",
-            "\n. 1er joueur Quel est votre nom ? ")
+               "\n","\n. 1er joueur Quel est votre nom ? ")
         if let firstPlayerName = readLine() {
             print("Bonjour \(firstPlayerName)")
             player1.name = firstPlayerName
@@ -43,7 +41,7 @@ class Game {
         if let choice = readLine() {
         
             if choice == "1" {
-                selectionPersonage(numeroEquipe: numeroEquipe)
+                selectionPersonage(numeroEquipe:numeroEquipe)
             }
             else if choice == "2" {
                 startGame()
@@ -53,7 +51,7 @@ class Game {
     // fonction pour laisser le choix à l'utilisateur de selectionner ses persos
     func selectionPersonage (numeroEquipe:Int) {
         
-       
+        var perso = [Character]()
         // limiter la selection des perso à 3
         while perso.count < 3 {
             
@@ -144,30 +142,49 @@ func startBattle () {
            "\n3")
     
     if let choice = readLine(){
-        switch choice {
-        
-        case "1":  charactPlayer1.insert(persoPlayer1[0], at: 0)
-        case "2":  charactPlayer1.insert(persoPlayer1[1], at: 0)
-        case "3": charactPlayer1.insert(persoPlayer1[2], at: 0)
-        default:
-            print("erreur")
+        let selection = Int(choice) ?? 1
+        if (selection > 0 && selection < 4) {
+            charactPlayer1.insert(persoPlayer1[selection - 1], at: 0)
         }
-}
-
-    print ("\(player2.name) choisis le personnage qui attaque ",
-           "\n  \(persoPlayer2.description)",
-           "\n1",
-           "\n2",
-           "\n3")
+    }
+    print ("choisis une arme",
+           "\n1 Axe",
+           "\n2 Sword")
     
+    if let choice = readLine() {
+        if choice == "1" {
+            Axe.init(damages: 200)
+            charactPlayer1[0].strenght += 200 }
+            if choice == "2" {
+                Sword.init(damages: 300)
+                charactPlayer1[0].strenght += 300       }
+            
+    }
+    
+        
     if let choice = readLine(){
-        switch choice {
-        case "1":  charactPlayer2.insert(persoPlayer2[0], at: 0)
-        case "2":  charactPlayer2.insert(persoPlayer2[1], at: 0)
-        case "3": charactPlayer2.insert(persoPlayer2[2], at: 0)
-        default:
-            print("erreur")
+        let selection = Int(choice) ?? 1
+        if (selection>0 && selection<4){
+            charactPlayer2.insert(persoPlayer2[selection - 1], at: 0)
         }
-}
-}
+    }
+    print ("choisis une arme",
+           "\n1 Axe",
+           "\n2 Sword")
+    
+    if let choice = readLine() {
+        if choice == "1" {
+            Axe.init(damages: 200)
+            charactPlayer2[0].strenght += 200 }
+            if choice == "2" {
+                Sword.init(damages: 300)
+                charactPlayer2[0].strenght += 300       }
+            
+    }
+    }
+    
 
+func attack () {
+    charactPlayer1[0].lifePoints - charactPlayer2[0].strenght
+    
+}
