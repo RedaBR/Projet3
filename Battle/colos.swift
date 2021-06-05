@@ -10,6 +10,6 @@ import Foundation
 class Colosus : Character {
     
     init(name:String) {
-        super.init(name: name, lifePoints: 556, strenght: 7777)
+        super.init(name: name, lifePoints: 556)
     }
 }

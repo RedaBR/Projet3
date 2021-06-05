@@ -10,6 +10,11 @@ class Weapon {
     
     var damages : Int
     
+    
+    init() {
+        self.damages=0
+    }
+    
     init(damages:Int) {
         self.damages=damages
     }

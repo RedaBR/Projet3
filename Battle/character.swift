@@ -14,14 +14,12 @@ class Character {
     var strenght : Int
 
     
-    init ( name : String , lifePoints : Int , strenght : Int) {
+    init ( name : String , lifePoints : Int ) {
         
         self.name = name
         self.lifePoints = lifePoints
-        self.strenght = strenght
-
+       self.strenght = 0
+    
     }
-    
-    
 }
 

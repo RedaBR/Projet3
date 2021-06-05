@@ -11,7 +11,7 @@ class Warrior : Character {
     
     
     init (name : String) {
-        super.init(name: name, lifePoints: 300, strenght: 1000)
+        super.init(name: name, lifePoints: 300)
     }
     }
 

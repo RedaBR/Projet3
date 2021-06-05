@@ -8,4 +8,7 @@
 import Foundation
 class Axe : Weapon {
     
+    override init () {
+        super.init(damages: 200)
+    }
 }
