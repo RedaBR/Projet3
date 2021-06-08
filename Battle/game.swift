@@ -18,20 +18,25 @@ class Game {
             "\n","\n. 1er joueur Quel est votre nom ? ")
         // on laisse le choix au joueur d'indiquer son nom
         if let firstPlayerName = readLine() {
+            
             print("Bonjour \(firstPlayerName)")
         // on stocke le nom du joueur à la propriété qui correspond
             player1.name = firstPlayerName
+            
         }
     
         menu(numeroEquipe: 1)
         
         print ("2eme jouer quel est votre nom ?")
         if let firstPlayersName2 = readLine() {
+            
             print ("Bonjour \(firstPlayersName2)")
             player2.name = firstPlayersName2
+           
         }
-        
-        menu(numeroEquipe: 2)
+        if player1.name == player2.name || player2.name == player1.name { print ("ce nom est déja existant"); return }
+            
+            menu(numeroEquipe: 2)
         
         startBattle()
         
@@ -48,7 +53,10 @@ class Game {
             else if choice == "2" {
                 startGame()
             }
+        
+            
         }
+        
     }
     // fonction pour laisser le choix aux joueurs de selectionner leurs persos
     private func selectionPersonage (numeroEquipe:Int) {
@@ -57,11 +65,11 @@ class Game {
         // limiter la selection des perso à 3
         while perso.count < 3 {
             
-            print("Selectionne jusqu'a 3 personnages pour constituer ton équipe",
-                  "\n1 Warrior",
-                  "\n2 Colosus",
-                  "\n3 Dwarf",
-                  "\n4 Magus")
+            print("Selectionne les personnages pour constituer ton équipe",
+                  "\n1 Warrior is the champion he have 300 lifepoints ",
+                  "\n2 Colosus is the titan he have 556 lifepoints" ,
+                  "\n3 Dwarf is the rock he have 436 lifepoints ",
+                  "\n4 Magus is the magicien he have 400 lifepoints")
             
             // choix du joueur
             if let selection = readLine(){
@@ -150,7 +158,7 @@ class Game {
                 }
             }
         }
-        
+    
         print("fin de la partie")
         if (persoPlayer1.count > 0) {
             print("le Joueur 1 à gagné")
@@ -169,28 +177,70 @@ class Game {
         print(perso2.lifePoints)
         // lancer le fight
         while perso2.lifePoints > 0 , perso1.lifePoints > 0 {
-            // personnaliser une attaque qui varie en fonction de l'apparition du coffre
-            var attaque = 0;
-            // choisir un chiffre au hasar entre 1 et 10
-            let number = Int.random(in: 1...10)
-            // si 1 ou 2 ou 3
-            if (number < 4) {
-                // on fait varié la force du personnage
-                attaque = Int.random(in: perso1.strenght-20...perso1.strenght+100)
-                // on informe le joueur qu'il a trouvé un coffre avec une arme qui augmente la force de son personnage
-                print("\(perso1.name) trouve un coffre avec une arme de \(attaque) de dégats")
-            } else {
-                // sinon l'attaque correspond à la force initiale du personnage
-                attaque = perso1.strenght
+            
+            print("\(perso1.name) voulez vous attaquer ou vous rajouter 50 de Life Points puis attaquer ",
+            "\n Attaquer",
+             "\n Life Points")
+            
+            if let choice = readLine() {
+                if choice == "1" {
+                    // personnaliser une attaque qui varie en fonction de l'apparition du coffre
+                    var attaque = 0;
+                    // choisir un chiffre au hasar entre 1 et 10
+                    let number = Int.random(in: 1...10)
+                    // si 1 ou 2 ou 3
+                    if (number < 4) {
+                        // on fait varié la force du personnage
+                        attaque = Int.random(in: perso1.strenght-20...perso1.strenght+100)
+                        // on informe le joueur qu'il a trouvé un coffre avec une arme qui augmente la force de son personnage
+                        print("\(perso1.name) trouve un coffre avec une arme de \(attaque) de dégats")
+                    } else {
+                        // sinon l'attaque correspond à la force initiale du personnage
+                        attaque = perso1.strenght
+                    }
+                    // on informe le joueur de l'attaque de son personnage
+                    print("\(perso1.name) attaque \(perso2.name)")
+                    // on baisse la vie du personnage 2 en fonction de la force du personnage 1 ; info stocké dans la variable attaque
+                    perso2.lifePoints -= attaque
+                    // on informe le joueur des dégats infligés
+                    print("\(perso1.name) inflige \(attaque) dégats à \(perso2.name)")
+                }
+                
+                if choice == "2" {
+                    print("\(perso1.name) a recupéré 50 Life Points")
+                    perso1.strenght += 50
+                    // personnaliser une attaque qui varie en fonction de l'apparition du coffre
+                    var attaque = 0;
+                    // choisir un chiffre au hasar entre 1 et 10
+                    let number = Int.random(in: 1...10)
+                    // si 1 ou 2 ou 3
+                    if (number < 4) {
+                        // on fait varié la force du personnage
+                        attaque = Int.random(in: perso1.strenght-20...perso1.strenght+100)
+                        // on informe le joueur qu'il a trouvé un coffre avec une arme qui augmente la force de son personnage
+                        print("\(perso1.name) trouve un coffre avec une arme de \(attaque) de dégats")
+                    } else {
+                        // sinon l'attaque correspond à la force initiale du personnage
+                        attaque = perso1.strenght
+                    }
+                    // on informe le joueur de l'attaque de son personnage
+                    print("\(perso1.name) attaque \(perso2.name)")
+                    // on baisse la vie du personnage 2 en fonction de la force du personnage 1 ; info stocké dans la variable attaque
+                    perso2.lifePoints -= attaque
+                    // on informe le joueur des dégats infligés
+                    print("\(perso1.name) inflige \(attaque) dégats à \(perso2.name)")
+                    
+                }
             }
-            // on informe le joueur de l'attaque de son personnage
-            print("\(perso1.name) attaque \(perso2.name)")
-            // on baisse la vie du personnage 2 en fonction de la force du personnage 1 ; info stocké dans la variable attaque
-            perso2.lifePoints -= attaque
-            // on informe le joueur des dégats infligés
-            print("\(perso1.name) inflige \(attaque) dégats à \(perso2.name)")
-            print(" il reste \(perso2.lifePoints) à \(perso2.name)")
-            if perso2.lifePoints > 0 {
+
+                print(" Vie de \(perso2.name) : \(perso2.lifePoints)",
+                "\n \(perso2.name) voulez vous attaquer ou vous soigner",
+                   "\n1 Attaquer",
+                    "\n2 Se soigner")
+            
+            //print(" il reste \(perso2.lifePoints) à \(perso2.name)")
+            if let choice = readLine() {
+                if choice == "1" {
                 var attaque = 0;
                 let number = Int.random(in: 1...10)
                 if (number < 4) {
@@ -200,10 +250,23 @@ class Game {
                     attaque = perso2.strenght
                 }
                 print("\(perso2.name) attaque \(perso1.name)")
-                perso1.lifePoints -= attaque
+                    perso1.lifePoints -= attaque
                 print("\(perso2.name) inflige \(attaque) dégats à \(perso1.name)")
-                print(" il reste \(perso1.lifePoints) à \(perso1.name)")
-            }
+                    print(" il reste \(perso1.lifePoints) à \(perso1.name)") }
+                if choice == "2" { print ("\(perso2.name) à recupéré 50 Life points et attaque \(perso1.name)")
+                    perso2.strenght += 50
+                    var attaque = 0;
+                    let number = Int.random(in: 1...10)
+                    if (number < 4) {
+                        attaque = Int.random(in: perso2.strenght-20...perso2.strenght+100)
+                        print("\(perso2.name) trouve un coffre avec une arme de \(attaque) de dégats")
+                    } else {
+                        attaque = perso2.strenght
+                    }
+                    print("\(perso2.name) attaque \(perso1.name)")
+                    
+                    perso1.lifePoints -= attaque                }
+        }
         }
         // si la vie du perso1 est inférieur à ou egale à 0 informé le joueur que son perso est mort
         if(perso1.lifePoints <= 0) {
@@ -215,7 +278,8 @@ class Game {
         print("\(perso2.name) est mort")
         return 1
         
-    }
+        }
+    
     // fonction qui stocke le choix du joueur
     func persoSelection(characters:[Character]) -> Character {
         
@@ -254,7 +318,7 @@ class Game {
 
 
     
-}
+
 
 
 enum CharactENUM {
@@ -264,4 +328,4 @@ enum CharactENUM {
     case dwarf
 }
 
-
+}

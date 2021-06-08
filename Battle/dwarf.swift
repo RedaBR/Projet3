@@ -10,6 +10,6 @@ import Foundation
 class Dwarf : Character {
         
         init(name:String){
-            super.init(name: name, lifePoints: 333)
+            super.init(name: name, lifePoints: 436)
         }
     }
