@@ -28,15 +28,17 @@ class Game {
         menu(numeroEquipe: 1)
         
         print ("2eme jouer quel est votre nom ?")
-        if let firstPlayersName2 = readLine() {
+        while(player2.name == "") {
+           
+            if let firstPlayersName2 = readLine() {
+                if player1.name == firstPlayersName2 {
+                    print ("ce nom est déja existant, veuillez saisir un autre nom");
+                } else {
+                    print ("Bonjour \(firstPlayersName2)")
+                    player2.name = firstPlayersName2
+                }
+            }
             
-            print ("Bonjour \(firstPlayersName2)")
-            player2.name = firstPlayersName2
-            
-        }
-        if player1.name == player2.name || player2.name == player1.name {
-            print ("ce nom est déja existant");
-            return
         }
         
         menu(numeroEquipe: 2)
