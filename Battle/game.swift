@@ -38,8 +38,11 @@ class Game {
             
             menu(numeroEquipe: 2)
         
-        startBattle(perso1: Character, perso2: Character)
+        
     }
+    
+    startBattle(perso1:Character , perso2:Character)
+    
     // fonction du menu
     private func menu (numeroEquipe:Int) {
         print("Créer votre equipe","\n1. Nouvelle equipe ","\n2. retour ")
