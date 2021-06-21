@@ -34,14 +34,16 @@ class Game {
             player2.name = firstPlayersName2
            
         }
-        if player1.name == player2.name || player2.name == player1.name { print ("ce nom est déja existant"); return }
-            
-            menu(numeroEquipe: 2)
+        if player1.name == player2.name || player2.name == player1.name {
+            print ("ce nom est déja existant");
+            return
+        }
         
-        
+        menu(numeroEquipe: 2)
+        startBattle(perso1:Character , perso2:Character(name: String(), lifePoints: Int()))
     }
     
-    startBattle(perso1:Character , perso2:Character)
+   
     
     // fonction du menu
     private func menu (numeroEquipe:Int) {
@@ -150,6 +152,7 @@ class Game {
                 return characters[selection - 1]
             }
         }
+        
         return Character(name:"", lifePoints: 0)
     }
     
@@ -205,21 +208,20 @@ class Game {
     private var player2 = Player (name: String())
 
     // fonction qui lance la battle
-    func startBattle(perso1:Character, perso2:Character) {
+    func startBattle() {
         var tours = 0
         // commencer par definir le personnage qui attaque et le faire attaquer tant que sa vie n'est pas 0
-        while persoPlayer1.count > 0, persoPlayer2.count > 0,perso2.lifePoints > 0 , perso1.lifePoints > 0 {
+        while persoPlayer1.count > 0, persoPlayer2.count > 0 {
             tours += 1
     
-            print("Début du Fight !")
-            print(perso1.lifePoints)
-            print(perso2.lifePoints)
+          
             var tours = 0
             // lancer le fight
                 tours += 1
                 if tours == 0 {
                     
-                    print ( "\(perso1.name) Veuillez Choisir un personnage de votre équipe pour attaquer")
+                    
+                    print ( "\(player1.name) Veuillez Choisir un personnage de votre équipe pour attaquer")
                         let fighter1 = persoSelection(characters: persoPlayer1)
                             print("Choisir son arme")
                             fighter1.strenght = weaponSelection().damages
@@ -230,7 +232,7 @@ class Game {
                             var strenght1 = 0;
                             let number = Int.random(in: 1...10)
                             if (number < 4) {
-                                strenght1 = Int.random(in: perso2.strenght-20...perso2.strenght+100)
+                                strenght1 = Int.random(in: fighter1.strenght-20...fighter1.strenght+100)
                                 print("\(perso1.name) trouve un coffre avec une arme de \(strenght1) de dégats")
                             } else {
                                 strenght1 = perso1.strenght
@@ -343,7 +345,7 @@ class Game {
                                 print("Vous avez choisi les soins",
                                 "\n Veuillez choisir le personnage que vous voulez soigner")
                                 let persoSoigné = soins(characters: persoPlayer1)
-                                persoSoigné.strenght += 100
+                                persoSoigné.lifePoints += 100
                                 print(" \(perso2.name) a recupéré 100 LifePoints ",
                                     "Vie de\(perso2.name):\(perso2.strenght)LifePoints")
                             }
