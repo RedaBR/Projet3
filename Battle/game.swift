@@ -38,8 +38,7 @@ class Game {
             
             menu(numeroEquipe: 2)
         
-        startBattle(perso1: <#Character#>, perso2: <#Character#>)
-        
+        startBattle(perso1: Character, perso2: Character)
     }
     // fonction du menu
     private func menu (numeroEquipe:Int) {
@@ -171,7 +170,8 @@ class Game {
         return weapon
     }
     
-    func soins (characters:[Character]) -> Character {
+    func soins (characters:[Character]) -> Character
+    {
         print ("\(characters.description)")
         
         for i in  0 ..< characters.count {
@@ -183,9 +183,11 @@ class Game {
             if (selection > 0 && selection <= characters.count) {
                 return characters[selection - 1]
             }
-        }
+                    }
         
+        return Character(name: String(), lifePoints: Int())
     }
+    
     
     
     
@@ -200,7 +202,7 @@ class Game {
     private var player2 = Player (name: String())
 
     // fonction qui lance la battle
-    private func startBattle(perso1:Character, perso2:Character) -> Int {
+    func startBattle(perso1:Character, perso2:Character) {
         var tours = 0
         // commencer par definir le personnage qui attaque et le faire attaquer tant que sa vie n'est pas 0
         while persoPlayer1.count > 0, persoPlayer2.count > 0,perso2.lifePoints > 0 , perso1.lifePoints > 0 {
@@ -333,7 +335,6 @@ class Game {
                                 print("\(perso2.name) inflige \(strenght2) dégats à \(perso1.name)")
                                 print(" Score: \(perso1.lifePoints)LifePoints à \(perso1.name)",
                                             "\n \(perso2.lifePoints) à \(perso2.name)")
-                            
                             }
                             if choice == "2" {
                                 print("Vous avez choisi les soins",
@@ -343,37 +344,25 @@ class Game {
                                 print(" \(perso2.name) a recupéré 100 LifePoints ",
                                     "Vie de\(perso2.name):\(perso2.strenght)LifePoints")
                             }
+                            
                         }
+                    
         // si la vie du perso1 est inférieur à ou egale à 0 informé le joueur que son perso est mort
         if(perso1.lifePoints <= 0) {
              
-            
+            persoPlayer1.remove(at: perso1.lifePoints)
             print("\(perso1.name) est mort")
             // on retourne le resultat qui indentifie le perdant
             
         }
-        
+        else if(perso2.lifePoints<=0) {
+            persoPlayer2.remove(at: perso2.lifePoints)
+        }
         print("\(perso2.name) est mort")
-        return 1
+
                 }
 
-                    let looserIndex = startGame(perso1: fighter1, perso2: fighter2)
-                    if (looserIndex == 0) {
-                        persoPlayer1.enumerated().forEach { (index, character) in
-                            if (character.name == fighter1.name) {
-                                persoPlayer1.remove(at: index)
-                            }
-                        }
-                    } else {
-                        persoPlayer2.enumerated().forEach { (index, character) in
-                            if (character.name == fighter2.name) {
-                                persoPlayer2.remove(at: index)
-                            }
-                        }
-                    }
-                    
-                    
-                    
+               
                     
         print("fin de la partie")
         if (persoPlayer1.count > 0) {
@@ -383,13 +372,15 @@ class Game {
         }
         print ("Félicitations vous avez effectué \(tours)tours afin de remporter la victoire")
                     
-                            }
-
-}
+                            
 
 
 
+
+                }
 
 
     }
 
+    }
+}
