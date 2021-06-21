@@ -357,8 +357,20 @@ class Game {
         return 1
                 }
 
-               
-                    
+                    let looserIndex = startGame(perso1: fighter1, perso2: fighter2)
+                    if (looserIndex == 0) {
+                        persoPlayer1.enumerated().forEach { (index, character) in
+                            if (character.name == fighter1.name) {
+                                persoPlayer1.remove(at: index)
+                            }
+                        }
+                    } else {
+                        persoPlayer2.enumerated().forEach { (index, character) in
+                            if (character.name == fighter2.name) {
+                                persoPlayer2.remove(at: index)
+                            }
+                        }
+                    }
                     
                     
                     
