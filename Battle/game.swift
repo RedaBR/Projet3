@@ -29,7 +29,7 @@ class Game {
         
         print ("2eme jouer quel est votre nom ?")
         while(player2.name == "") {
-           
+            
             if let firstPlayersName2 = readLine() {
                 if player1.name == firstPlayersName2 {
                     print ("ce nom est déja existant, veuillez saisir un autre nom");
@@ -40,7 +40,7 @@ class Game {
             }
             
         }
-
+        
         
         menu(numeroEquipe: 2)
         startBattle()
@@ -68,7 +68,7 @@ class Game {
         }
         else if choice == "2" {
             startGame()
-             
+            
         }
         
         
@@ -98,20 +98,31 @@ class Game {
                   "\n3 Dwarf is the rock he have 436 lifepoints ",
                   "\n4 Magus is the magicien he have 400 lifepoints")
             
-            // choix du joueur
-            if let selection = readLine(){
-                switch selection  {
-                case "1" :
-                    perso.append(newCharacter(characterType: .warrior))
-                case "2" :
-                    perso.append(newCharacter(characterType: .colos))
-                case "3" :
-                    perso.append(newCharacter(characterType: .dwarf))
-                case "4" :
-                    perso.append(newCharacter(characterType: .magus))
-                default : break
-                }
-            }
+            var erreur = true
+            while erreur {
+                
+                if let selection = readLine(){
+                    switch selection  {
+                    case "1" :
+                        perso.append(newCharacter(characterType: .warrior))
+                        erreur = false
+                    case "2" :
+                        perso.append(newCharacter(characterType: .colos))
+                        erreur = false
+                    case "3" :
+                        perso.append(newCharacter(characterType: .dwarf))
+                        erreur = false
+                    case "4" :
+                        perso.append(newCharacter(characterType: .magus))
+                        erreur = false
+                    default : print("erreur")
+                        (selection != "1" && selection != "2" && selection != "3" && selection != "4")
+                        erreur = true
+                    }
+                }            }
+            
+            
+            
         }
         
         // on identifie le joueur grace au paramétre de la fonction
@@ -151,18 +162,24 @@ class Game {
     // fonction qui stocke le choix du joueur
     func persoSelection(characters:[Character]) -> (Int, Character) {
         
+        
         print("\(characters.description)")
         
         for i in 0 ..< characters.count {
             print(i+1)
         }
-        
-        if let choice = readLine(){
-            let selection = Int(choice) ?? 1
-            if (selection > 0 && selection <= characters.count) {
-                return ( selection - 1, characters[selection - 1])
+            if let choice = readLine(){
+                let selection = Int(choice) ?? 1
+                if (selection > 0 && selection <= characters.count)
+                {
+                
+                    return ( selection - 1, characters[selection - 1])
+                    
+                }
+               
+
             }
-        }
+            
         
         return (0, Character(name:"", lifePoints: 0))
     }
@@ -170,20 +187,32 @@ class Game {
     
     //laisser le choix au joueur de selectionner son arme et stocker l'information
     func weaponSelection() -> Weapon {
+        var erreur = true
         
-        print ("1 Axe",
-               "\n2 Sword")
-        var weapon = Weapon()
-        if let choice = readLine() {
-            if choice == "1" {
-                weapon = Axe.init()
-            }
-            if choice == "2" {
-                weapon = Sword.init()
+        while erreur {
+            print ("1 Axe",
+                   "\n2 Sword")
+            var weapon = Weapon()
+            if let choice = readLine() {
+                if choice == "1" {
+                    weapon = Axe.init()
+                    erreur = false
+                }
+                else if choice == "2" {
+                    weapon = Sword.init()
+                    erreur = false
+                    
+                }
                 
+                if choice != "1" && choice != "2" {
+                    erreur = true
+                }
             }
+            return weapon
+            
         }
-        return weapon
+       
+        
     }
     
     
@@ -223,8 +252,8 @@ class Game {
             
             if (tours > 0) {
                 print ("\(fightPlayer.name) veuillez choisir entre Attaque ou Soins",
-                   "\n1 Attaque",
-                   "\n2 Soins")
+                       "\n1 Attaque",
+                       "\n2 Soins")
                 var erreur = true
                 
                 while erreur {
