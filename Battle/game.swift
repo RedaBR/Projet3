@@ -40,6 +40,7 @@ class Game {
             }
             
         }
+
         
         menu(numeroEquipe: 2)
         startBattle()
@@ -50,18 +51,26 @@ class Game {
     // fonction du menu
     private func menu (numeroEquipe:Int) {
         print("Créer votre equipe","\n1. Nouvelle equipe ","\n2. retour ")
-        
-        if let choice = readLine() {
-            
-            if choice == "1" {
-                selectionPersonage(numeroEquipe:numeroEquipe)
+        var choice = ""
+        while choice == "" {
+            if let text = readLine() {
+                if ( text != "1" && text != "2" ) {
+                    print ("Veuillez choisir entre les 2 propositions en tapant 1 ou 2 Merci ")
+                }
+                else {
+                    choice = text
+                }
             }
-            else if choice == "2" {
-                startGame()
-            }
-            
-            
         }
+        
+        if choice == "1" {
+            selectionPersonage(numeroEquipe:numeroEquipe)
+        }
+        else if choice == "2" {
+            startGame()
+             
+        }
+        
         
     }
     
@@ -216,14 +225,25 @@ class Game {
                 print ("\(fightPlayer.name) veuillez choisir entre Attaque ou Soins",
                    "\n1 Attaque",
                    "\n2 Soins")
-                if let choice = readLine(){
-                    if choice == "1" {
-                        print("\(fightPlayer.name) Vous avez choisi d'attaquer.")
-                        attaque = true
-                    }else if choice == "2" {
-                        attaque = false
-                    }
-                }
+                var erreur = true
+                
+                while erreur {
+                    if let text = readLine(){
+                        if text == "1" {
+                            print("\(fightPlayer.name) Vous avez choisi d'attaquer.")
+                            attaque = true
+                            erreur = false
+                        }else if text == "2" {
+                            attaque = false
+                            erreur = false
+                        }
+                        else {
+                            (text != "1" && text != "2")
+                            print ("erreur")
+                            erreur = true
+                        }
+                    }                }
+                
             }
             
             
@@ -286,31 +306,4 @@ class Game {
 
 
 
-// si la vie du perso1 est inférieur à ou egale à 0 informé le joueur que son perso est mort
-//                if(perso1.lifePoints <= 0) {
-//
-//                    persoPlayer1.remove(at: perso1.lifePoints)
-//                    print("\(perso1.name) est mort")
-//                    // on retourne le resultat qui indentifie le perdant
-//
-//                }
-//                else if(perso2.lifePoints<=0) {
-//                    persoPlayer2.remove(at: perso2.lifePoints)
-//                }
-//                print("\(perso2.name) est mort")
-//
-//            }
-//
-//
-//
-//            print("fin de la partie")
-//            if (persoPlayer1.count > 0) {
-//                print("le Joueur 1 à gagné")
-//            } else {
-//                print("le Joueur 2 à gagné")
-//            }
-//            print ("Félicitations vous avez effectué \(tours)tours afin de remporter la victoire")
-//
-//
-//
-//        }
+
