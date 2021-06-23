@@ -10,6 +10,6 @@ import Foundation
 class Magus : Character {
     
     init (name : String) {
-        super.init(name: name, lifePoints: 400)
+        super.init(name: name, lifePoints:400)
     }
 }

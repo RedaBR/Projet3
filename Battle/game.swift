@@ -115,14 +115,12 @@ class Game {
                     case "4" :
                         perso.append(newCharacter(characterType: .magus))
                         erreur = false
-                    default : print("erreur")
-                        (selection != "1" && selection != "2" && selection != "3" && selection != "4")
-                        erreur = true
+                    default :
+                        
+                        print("erreur")
                     }
-                }            }
-            
-            
-            
+                }
+            }
         }
         
         // on identifie le joueur grace au paramétre de la fonction
@@ -168,31 +166,34 @@ class Game {
         for i in 0 ..< characters.count {
             print(i+1)
         }
+        var selection = -1
+        while (selection == -1) {
             if let choice = readLine(){
-                let selection = Int(choice) ?? 1
-                if (selection > 0 && selection <= characters.count)
-                {
                 
-                    return ( selection - 1, characters[selection - 1])
-                    
+                let integerChoice = Int(choice) ?? -1
+                if (integerChoice != -1 && integerChoice > 0 && integerChoice <= characters.count)
+                {
+                    selection = integerChoice
                 }
-               
-
+                else  {
+                    print("erreur de saisie, veuillez reesayer")
+                }
             }
             
+        }
         
-        return (0, Character(name:"", lifePoints: 0))
+        return ( selection - 1, characters[selection - 1])
     }
     
     
     //laisser le choix au joueur de selectionner son arme et stocker l'information
+    
     func weaponSelection() -> Weapon {
+        print ("1 Axe",
+               "\n2 Sword")
         var erreur = true
-        
+        var weapon = Weapon()
         while erreur {
-            print ("1 Axe",
-                   "\n2 Sword")
-            var weapon = Weapon()
             if let choice = readLine() {
                 if choice == "1" {
                     weapon = Axe.init()
@@ -201,17 +202,14 @@ class Game {
                 else if choice == "2" {
                     weapon = Sword.init()
                     erreur = false
-                    
                 }
-                
-                if choice != "1" && choice != "2" {
-                    erreur = true
+                else {
+                    print("erreur")
                 }
             }
-            return weapon
-            
         }
-       
+        
+        return weapon
         
     }
     
