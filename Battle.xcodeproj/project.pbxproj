@@ -10,10 +10,10 @@
 		9D3BC1302655400300C2E43A /* game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC12F2655400300C2E43A /* game.swift */; };
 		9D3BC1332655420500C2E43A /* player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC1322655420500C2E43A /* player.swift */; };
 		9D3BC1362655426A00C2E43A /* character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC1352655426A00C2E43A /* character.swift */; };
-		9D3BC139265542A600C2E43A /* warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC138265542A600C2E43A /* warrior.swift */; };
-		9D3BC13C265542DB00C2E43A /* colos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC13B265542DB00C2E43A /* colos.swift */; };
-		9D3BC13F2655430000C2E43A /* magus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC13E2655430000C2E43A /* magus.swift */; };
-		9D3BC1422655434700C2E43A /* dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC1412655434700C2E43A /* dwarf.swift */; };
+		9D3BC139265542A600C2E43A /* iron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC138265542A600C2E43A /* iron.swift */; };
+		9D3BC13C265542DB00C2E43A /* eren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC13B265542DB00C2E43A /* eren.swift */; };
+		9D3BC13F2655430000C2E43A /* saruman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC13E2655430000C2E43A /* saruman.swift */; };
+		9D3BC1422655434700C2E43A /* golem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3BC1412655434700C2E43A /* golem.swift */; };
 		9D5B08792653FE1A00F32D43 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5B08782653FE1A00F32D43 /* main.swift */; };
 		9DF805ED265EE4D4006124F3 /* weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF805EC265EE4D4006124F3 /* weapon.swift */; };
 		9DF805F0265EE65B006124F3 /* axe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF805EF265EE65B006124F3 /* axe.swift */; };
@@ -36,10 +36,10 @@
 		9D3BC12F2655400300C2E43A /* game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = game.swift; sourceTree = "<group>"; };
 		9D3BC1322655420500C2E43A /* player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = player.swift; sourceTree = "<group>"; };
 		9D3BC1352655426A00C2E43A /* character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = character.swift; sourceTree = "<group>"; };
-		9D3BC138265542A600C2E43A /* warrior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = warrior.swift; sourceTree = "<group>"; };
-		9D3BC13B265542DB00C2E43A /* colos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colos.swift; sourceTree = "<group>"; };
-		9D3BC13E2655430000C2E43A /* magus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magus.swift; sourceTree = "<group>"; };
-		9D3BC1412655434700C2E43A /* dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dwarf.swift; sourceTree = "<group>"; };
+		9D3BC138265542A600C2E43A /* iron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iron.swift; sourceTree = "<group>"; };
+		9D3BC13B265542DB00C2E43A /* eren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eren.swift; sourceTree = "<group>"; };
+		9D3BC13E2655430000C2E43A /* saruman.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saruman.swift; sourceTree = "<group>"; };
+		9D3BC1412655434700C2E43A /* golem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = golem.swift; sourceTree = "<group>"; };
 		9D5B08752653FE1A00F32D43 /* Battle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Battle; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5B08782653FE1A00F32D43 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9DF805EC265EE4D4006124F3 /* weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weapon.swift; sourceTree = "<group>"; };
@@ -83,10 +83,10 @@
 				9DF805F2265EE68A006124F3 /* sword.swift */,
 				9D3BC1322655420500C2E43A /* player.swift */,
 				9D3BC1352655426A00C2E43A /* character.swift */,
-				9D3BC138265542A600C2E43A /* warrior.swift */,
-				9D3BC13B265542DB00C2E43A /* colos.swift */,
-				9D3BC13E2655430000C2E43A /* magus.swift */,
-				9D3BC1412655434700C2E43A /* dwarf.swift */,
+				9D3BC138265542A600C2E43A /* iron.swift */,
+				9D3BC13B265542DB00C2E43A /* eren.swift */,
+				9D3BC13E2655430000C2E43A /* saruman.swift */,
+				9D3BC1412655434700C2E43A /* golem.swift */,
 				9D5B08782653FE1A00F32D43 /* main.swift */,
 			);
 			path = Battle;
@@ -150,16 +150,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DF805F0265EE65B006124F3 /* axe.swift in Sources */,
-				9D3BC139265542A600C2E43A /* warrior.swift in Sources */,
+				9D3BC139265542A600C2E43A /* iron.swift in Sources */,
 				9D3BC1332655420500C2E43A /* player.swift in Sources */,
 				9D3BC1302655400300C2E43A /* game.swift in Sources */,
 				9DF805ED265EE4D4006124F3 /* weapon.swift in Sources */,
 				9DF805F3265EE68A006124F3 /* sword.swift in Sources */,
-				9D3BC13C265542DB00C2E43A /* colos.swift in Sources */,
+				9D3BC13C265542DB00C2E43A /* eren.swift in Sources */,
 				9D3BC1362655426A00C2E43A /* character.swift in Sources */,
-				9D3BC1422655434700C2E43A /* dwarf.swift in Sources */,
+				9D3BC1422655434700C2E43A /* golem.swift in Sources */,
 				9D5B08792653FE1A00F32D43 /* main.swift in Sources */,
-				9D3BC13F2655430000C2E43A /* magus.swift in Sources */,
+				9D3BC13F2655430000C2E43A /* saruman.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

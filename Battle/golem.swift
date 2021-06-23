@@ -1,5 +1,5 @@
 //
-//  dwarfClass.swift
+//  GolemClass.swift
 //  Battle
 //
 //  Created by Reda on 19/05/2021.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Dwarf : Character {
+class Golem : Character {
         
         init(name:String){
-            super.init(name: name, lifePoints: 436)
+            super.init(name: name, lifePoints: 1000)
         }
     }

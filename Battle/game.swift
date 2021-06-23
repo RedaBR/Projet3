@@ -75,10 +75,10 @@ class Game {
     }
     
     enum CharactENUM {
-        case warrior
-        case colos
-        case magus
-        case dwarf
+        case iron
+        case eren
+        case saruman
+        case golem
     }
     
     
@@ -93,10 +93,10 @@ class Game {
         while perso.count < 3 {
             
             print("Selectionne les personnages pour constituer ton équipe",
-                  "\n1 Warrior is the champion he have 300 lifepoints ",
-                  "\n2 Colosus is the titan he have 556 lifepoints" ,
-                  "\n3 Dwarf is the rock he have 436 lifepoints ",
-                  "\n4 Magus is the magicien he have 400 lifepoints")
+                  "\n1 Iron is the champion he have 300 lifepoints ",
+                  "\n2 Eren is the titan he have 556 lifepoints" ,
+                  "\n3 Golem is the rock he have 1000 lifepoints",
+                  "\n4 Saruman is the magicien he have 400 lifepoints")
             
             var erreur = true
             while erreur {
@@ -104,16 +104,16 @@ class Game {
                 if let selection = readLine(){
                     switch selection  {
                     case "1" :
-                        perso.append(newCharacter(characterType: .warrior))
+                        perso.append(newCharacter(characterType: .iron))
                         erreur = false
                     case "2" :
-                        perso.append(newCharacter(characterType: .colos))
+                        perso.append(newCharacter(characterType: .eren))
                         erreur = false
                     case "3" :
-                        perso.append(newCharacter(characterType: .dwarf))
+                        perso.append(newCharacter(characterType: .golem))
                         erreur = false
                     case "4" :
-                        perso.append(newCharacter(characterType: .magus))
+                        perso.append(newCharacter(characterType: .saruman))
                         erreur = false
                     default :
                         
@@ -143,14 +143,14 @@ class Game {
             
             switch characterType {
             
-            case .warrior :
-                return Warrior(name: charaterNamed)
-            case .colos :
-                return Colosus(name:charaterNamed)
-            case .magus :
-                return Magus(name: charaterNamed)
-            case .dwarf :
-                return Dwarf(name: charaterNamed)
+            case .iron :
+                return Iron(name: charaterNamed)
+            case .eren :
+                return Eren(name:charaterNamed)
+            case .saruman :
+                return Saruman(name: charaterNamed)
+            case .golem :
+                return Golem(name: charaterNamed)
             }
         }
         return Character(name: "", lifePoints: 0)
@@ -326,8 +326,8 @@ class Game {
         print("\(fighter1.name) attaque \(fighter2.name)")
         fighter2.lifePoints -= strenght1
         print("\(fighter1.name) inflige \(strenght1) dégats à \(fighter2.name)")
-        print(" Score: \(fighter1.name) à \(fighter1.lifePoints) LifePoints",
-              "\n \(fighter2.name) à \(fighter2.lifePoints) LifePoints")
+        print(" Score: \(fighter1.name) à \(fighter1.lifePoints) points de vie",
+              "\n\(fighter2.name) à \(fighter2.lifePoints) points de vie")
     }
 }
 
