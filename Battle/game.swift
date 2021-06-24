@@ -14,36 +14,57 @@ class Game {
     
     //fonction qui lance le jeu , identifie et nomme les joueurs
     func startGame(){
+        var erreur  = true
         print ("\n. Bienvenue dans Battle ",
                "\n","\n. 1er joueur Quel est votre nom ? ")
-        // on laisse le choix au joueur d'indiquer son nom
-        if let firstPlayerName = readLine() {
-            
-            print("Bonjour \(firstPlayerName)")
-            // on stocke le nom du joueur à la propriété qui correspond
-            player1.name = firstPlayerName
-            
+        while erreur {
+            // on laisse le choix au joueur d'indiquer son nom
+            if let firstPlayerName = readLine() {
+                
+                // on stocke le nom du joueur à la propriété qui correspond
+                player1.name = firstPlayerName
+                erreur  = false
+                if firstPlayerName == ""  {
+                    print ("erreur")
+                    erreur = true
+                    
+                }
+               
+            }
         }
+        print ("Salutation à toi cher(e) \(player1.name)")
         
         menu(numeroEquipe: 1)
         
         print ("2eme jouer quel est votre nom ?")
-        while(player2.name == "") {
+        
+        var error = true
+        while error {
             
             if let firstPlayersName2 = readLine() {
                 if player1.name == firstPlayersName2 {
                     print ("ce nom est déja existant, veuillez saisir un autre nom");
-                } else {
-                    print ("Bonjour \(firstPlayersName2)")
+                    error = false
+                }
+                else if player1.name != firstPlayersName2
+                {
+                    
                     player2.name = firstPlayersName2
+                    error = false
+                    
+                }
+                 if firstPlayersName2 == "" {
+                    print ("erreur")
+                    error = true
+                    
                 }
             }
             
         }
-        
+        print ("Salutations à toi cher  \(player2.name)")
         
         menu(numeroEquipe: 2)
-        startBattle()
+        battle()
     }
     
     
@@ -64,7 +85,7 @@ class Game {
         }
         
         if choice == "1" {
-            selectionPersonage(numeroEquipe:numeroEquipe)
+            characterSelection(numeroEquipe:numeroEquipe)
         }
         else if choice == "2" {
             startGame()
@@ -86,7 +107,7 @@ class Game {
     
     
     // fonction pour laisser le choix aux joueurs de selectionner leurs persos
-    private func selectionPersonage (numeroEquipe:Int) {
+    private func characterSelection (numeroEquipe:Int) {
         //tableaux qui contient les personnages choisis
         var perso = [Character]()
         // limiter la selection des perso à 3
@@ -98,23 +119,23 @@ class Game {
                   "\n3 Golem is the rock he have 1000 lifepoints",
                   "\n4 Saruman is the magicien he have 400 lifepoints")
             
-            var erreur = true
-            while erreur {
+            var error = true
+            while error {
                 
                 if let selection = readLine(){
                     switch selection  {
                     case "1" :
                         perso.append(newCharacter(characterType: .iron))
-                        erreur = false
+                        error = false
                     case "2" :
                         perso.append(newCharacter(characterType: .eren))
-                        erreur = false
+                        error = false
                     case "3" :
                         perso.append(newCharacter(characterType: .golem))
-                        erreur = false
+                        error = false
                     case "4" :
                         perso.append(newCharacter(characterType: .saruman))
-                        erreur = false
+                        error = false
                     default :
                         
                         print("erreur")
@@ -224,7 +245,7 @@ class Game {
     private var player2 = Player (name: String())
     
     // fonction qui lance la battle
-    func startBattle() {
+    func battle() {
         var tours = 0
         // commencer par definir le personnage qui attaque et le faire attaquer tant que sa vie n'est pas 0
         while persoPlayer1.count > 0, persoPlayer2.count > 0 {
@@ -246,7 +267,7 @@ class Game {
                 persoDefPlayer = persoPlayer1
             }
             
-            var attaque = true;
+            var attack = true;
             
             if (tours > 0) {
                 print ("\(fightPlayer.name) veuillez choisir entre Attaque ou Soins",
@@ -258,10 +279,10 @@ class Game {
                     if let text = readLine(){
                         if text == "1" {
                             print("\(fightPlayer.name) Vous avez choisi d'attaquer.")
-                            attaque = true
+                            attack = true
                             erreur = false
                         }else if text == "2" {
-                            attaque = false
+                            attack = false
                             erreur = false
                         }
                         else {
@@ -274,7 +295,7 @@ class Game {
             }
             
             
-            if attaque {
+            if attack {
                 print ("\(fightPlayer.name) Veuillez Choisir un personnage de votre équipe")
                 let (selectedIndex, f1) = persoSelection(characters: persoFightPlayer)
                 print("Choisir son arme")
