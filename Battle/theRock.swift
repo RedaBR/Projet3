@@ -1,5 +1,5 @@
 //
-//  GolemClass.swift
+//  TheRockClass.swift
 //  Battle
 //
 //  Created by Reda on 19/05/2021.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Golem : Character {
+class TheRock : Character {
         
         init(name:String){
-            super.init(name: name, lifePoints: 1000)
+            super.init(name: name, lifePoints: 240)
         }
     }

@@ -11,6 +11,3 @@ import Foundation
 // instance du modéle jeu pour lancer les methodes du modéle 
 var game = Game()
 game.startGame()
-
-
-

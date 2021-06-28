@@ -96,16 +96,15 @@ class Game {
     }
     
     enum CharactENUM {
-        case iron
-        case eren
-        case saruman
-        case golem
+        case theChampion
+        case theTitan
+        case theMagician
+        case theRock
     }
     
     
     
-    
-    
+    var unavailableName = [String]()
     // fonction pour laisser le choix aux joueurs de selectionner leurs persos
     private func characterSelection (numeroEquipe:Int) {
         //tableaux qui contient les personnages choisis
@@ -114,10 +113,10 @@ class Game {
         while perso.count < 3 {
             
             print("Selectionne les personnages pour constituer ton équipe",
-                  "\n1 Iron is the champion he have 300 lifepoints ",
-                  "\n2 Eren is the titan he have 556 lifepoints" ,
-                  "\n3 Golem is the rock he have 1000 lifepoints",
-                  "\n4 Saruman is the magicien he have 400 lifepoints")
+                  "\n1 the champion have 300 lifepoints ",
+                  "\n2 the titan  have 556 lifepoints" ,
+                  "\n3 the rock have 1000 lifepoints",
+                  "\n4 the magicien have 400 lifepoints")
             
             var error = true
             while error {
@@ -125,19 +124,26 @@ class Game {
                 if let selection = readLine(){
                     switch selection  {
                     case "1" :
-                        perso.append(newCharacter(characterType: .iron))
+                        let character = characterName(characterType: .theChampion)
+                        perso.append(character)
+                        unavailableName.append(character.name)
                         error = false
                     case "2" :
-                        perso.append(newCharacter(characterType: .eren))
+                        let character = characterName(characterType: .theTitan)
+                        perso.append(character)
+                        unavailableName.append(character.name)
                         error = false
                     case "3" :
-                        perso.append(newCharacter(characterType: .golem))
+                        let character = characterName(characterType: .theRock)
+                        perso.append(character)
+                        unavailableName.append(character.name)
                         error = false
                     case "4" :
-                        perso.append(newCharacter(characterType: .saruman))
+                        let character = characterName(characterType: .theMagician)
+                        perso.append(character)
+                        unavailableName.append(character.name)
                         error = false
                     default :
-                        
                         print("erreur")
                     }
                 }
@@ -151,30 +157,41 @@ class Game {
         } else if (numeroEquipe == 2) {
             persoPlayer2.append(contentsOf: perso)
         }
+        
         // on informe le joueur que l'equipe est consitué 
         print("Votre équipe est constituée")
         
     }
     
     // laisser la possibilité aux joueurs de personaliser le nom du personnage
-    func newCharacter (characterType : CharactENUM)->Character  {
+    func characterName (characterType : CharactENUM)->Character  {
         print ("Choisi le nom de ton perso ")
+
+        var nameOfCharacter = ""
+        while nameOfCharacter == "" {
+            if let charaterNamed = readLine(){
+                if unavailableName.contains(charaterNamed){
+                    print ("erreur")
+                }
+                else {
+                    nameOfCharacter = charaterNamed
+                }
         
-        if let charaterNamed = readLine(){
-            
-            switch characterType {
-            
-            case .iron :
-                return Iron(name: charaterNamed)
-            case .eren :
-                return Eren(name:charaterNamed)
-            case .saruman :
-                return Saruman(name: charaterNamed)
-            case .golem :
-                return Golem(name: charaterNamed)
             }
         }
-        return Character(name: "", lifePoints: 0)
+        
+        switch characterType {
+        
+            case .theChampion :
+                return TheChampion(name: nameOfCharacter)
+            case .theTitan :
+                return TheTitan(name:nameOfCharacter)
+            case .theMagician :
+                return TheMagician(name: nameOfCharacter)
+            case .theRock :
+                return TheRock(name: nameOfCharacter)
+        }
+      
     }
     
     
@@ -273,24 +290,24 @@ class Game {
                 print ("\(fightPlayer.name) veuillez choisir entre Attaque ou Soins",
                        "\n1 Attaque",
                        "\n2 Soins")
-                var erreur = true
+                var error = true
                 
-                while erreur {
+                while error {
                     if let text = readLine(){
                         if text == "1" {
                             print("\(fightPlayer.name) Vous avez choisi d'attaquer.")
                             attack = true
-                            erreur = false
+                            error = false
                         }else if text == "2" {
                             attack = false
-                            erreur = false
+                            error = false
                         }
-                        else {
-                            (text != "1" && text != "2")
+                        else  {
                             print ("erreur")
-                            erreur = true
+                            error = true
                         }
-                    }                }
+                    }
+                }
                 
             }
             
@@ -302,10 +319,11 @@ class Game {
                 f1.strenght = weaponSelection().damages
                 print("Veuillez choisir le personnage que vous voulez attaquer dans l'équipe adverse")
                 let (selectedIndex2, f2) = persoSelection(characters:persoDefPlayer)
-                
+
                 fight(fighter1: f1, fighter2: f2)
                 if (f2.lifePoints <= 0) {
                     print("\(f2.name) est mort")
+                    // tour % 2 == 0 si tour est pair
                     if (tours % 2 == 0) {
                         persoPlayer2.remove(at: selectedIndex2)
                     } else {
