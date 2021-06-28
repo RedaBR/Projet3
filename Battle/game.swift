@@ -14,19 +14,19 @@ class Game {
     
     //fonction qui lance le jeu , identifie et nomme les joueurs
     func startGame(){
-        var error  = true
+        var erreur  = true
         print ("\n. Bienvenue dans Battle ",
                "\n","\n. 1er joueur Quel est votre nom ? ")
-        while error {
+        while erreur {
             // on laisse le choix au joueur d'indiquer son nom
             if let firstPlayerName = readLine() {
                 
                 // on stocke le nom du joueur à la propriété qui correspond
                 player1.name = firstPlayerName
-                error  = false
+                erreur  = false
                 if firstPlayerName == ""  {
                     print ("erreur")
-                    error = true
+                    erreur = true
                     
                 }
                
@@ -38,8 +38,8 @@ class Game {
         
         print ("2eme jouer quel est votre nom ?")
         
-        var fault = true
-        while fault {
+        var error = true
+        while error {
             
             if let firstPlayersName2 = readLine() {
                 if player1.name == firstPlayersName2 {
@@ -159,6 +159,7 @@ class Game {
     // laisser la possibilité aux joueurs de personaliser le nom du personnage
     func newCharacter (characterType : CharactENUM)->Character  {
         print ("Choisi le nom de ton perso ")
+        
         if let charaterNamed = readLine(){
             
             switch characterType {
