@@ -8,18 +8,14 @@
 import Foundation
 // un modele personnages avec les propriétés des personnages 
 class Character {
-    
     var name : String
     var lifePoints : Int
     var strenght : Int
-
     
     init ( name : String , lifePoints : Int ) {
-        
         self.name = name
         self.lifePoints = lifePoints
-       self.strenght = 0
-    
+        self.strenght = 0
     }
 }
 
